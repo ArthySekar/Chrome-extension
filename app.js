@@ -5,6 +5,28 @@ const delBtn = document.getElementById("del-btn")
 const tabBtn = document.getElementById("tab-btn")
 
 
+//local storage
+const lendslocalStorage = JSON.parse(localStorage.getItem("myLeads"))
+console.log(lendslocalStorage)
+
+// if local storage is available then print it on screen using DOM [render function]
+if(lendslocalStorage){
+    myLeads = lendslocalStorage 
+    render(myLeads)
+}
+
+//copy URL using chrome API
+tabBtn.addEventListener("click", function(){
+
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+         myLeads.push(tabs[0].url)
+        localStorage.setItem("myLeads", JSON.stringify(myLeads) )
+         render(myLeads)
+    })
+     })
+
+   
+     
 function render(leads){
     let listitems = " "
     for(let i=0; i< leads.length; i++){
