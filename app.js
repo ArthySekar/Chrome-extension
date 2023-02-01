@@ -4,6 +4,27 @@ const UlEl = document.getElementById("ul-el")
 const delBtn = document.getElementById("del-btn")
 const tabBtn = document.getElementById("tab-btn")
 
+
+function render(leads){
+    let listitems = " "
+    for(let i=0; i< leads.length; i++){
+       // UlEl.innerHTML += "<li>" + myLeads[i] + "</li>"
+        //let li = document.createElement("li")
+        //li.textContent = myLeads[i]
+       // UlEl.append(li)
+
+       listitems += `<li>
+                     <a  href = '#' target = '"${leads[i]}"' >
+                     ${leads[i]}
+                     </a>
+                     </li>
+                     `
+       //console.log(listitems)
+    }
+    
+    UlEl.innerHTML = listitems
+    }
+
 //save button 
 saveEl.addEventListener("click", function(){
     
